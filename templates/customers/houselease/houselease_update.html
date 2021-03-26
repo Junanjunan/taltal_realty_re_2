@@ -1,0 +1,8 @@
+roomlease_update.html
+{% include "books/books_nav.html" %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>수정 완료</button>
+</form>

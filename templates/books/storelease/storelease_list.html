@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+<h5>Search</h5>
+{% include "books/books_nav.html" %}
+<form method="get" action="{% url 'books:store-lease-search' %}">
+    <label for='address'>주소:</label><input id='address' name='address' />
+    <label for="right_deposit">권리금:</label><input value=0 type="number" id="right_deposit" name="right_deposit" />
+    <label for='deposit'>보증금:</label><input value=0 type='number' id='deposit' name='deposit' />
+    <label for='month_fee'>월세:</label><input value=0 type='number' id='month_fee' name='month_fee' />
+    <label for='area_m2'>면적:</label><input value=0 type='number' id='area_m2' name='area_m2' />   
+    <label for='parking'>주차:</label><input type='checkbox' id='parking' name='parking' />
+    <label for='elevator'>E.V.:</label><input type='checkbox' id='elevator' name='elevator' />
+    <label for='empty'>공실:</label><input type='checkbox' id='empty' name='empty' />
+    <label for='naver'>Naver:</label><input type='checkbox' id='naver' name='naver' />
+    <label for='not_finished'>현재매물:</label><input checked type='checkbox' id='not_finished' name='not_finished' />
+    <label for='finished'>완료매물:</label><input type='checkbox' id='finished' name='finished' />
+    <button>Search</button>
+</form>
+<a href="{% url 'books:store-lease-creating' %}">새 매물 등록</a>
+
+<table style="width:100%">
+    <tr>
+        <th>No.</th>
+        <th>주소</th>
+        <th>확인일</th>
+        <th>권리금</th>
+        <th>보증금</th>
+        <th>월세</th>
+        <th>면적m2</th>
+        <th>집주인</th>
+        <th>세입자</th>
+        <th>주차</th>
+        <th>E.V.</th>
+        <th>공실</th>
+        <th>Naver</th>
+        <th>현재매물</th>
+        <th>완료매물</th>
+        <th>비고</th>
+        <th>매물관리</th>
+    </tr>
+    {% for list in storelease %}
+    <tr>
+        <th>{{forloop.counter}}</th>
+        <th>{{list.address}}</a></th>
+        <th>{{list.updated}}</th>
+        <th>{{list.right_deposit}}</th>
+        <th>{{list.deposit}}</th>
+        <th>{{list.month_fee}}</th>
+        <th>{{list.area_m2}}</th>
+        <th>{{list.owner_phone}}</th>
+        <th>{{list.tenant_phone}}</th>
+        <th>{{list.parking}}</th>
+        <th>{{list.elevator}}</th>
+        <th>{{list.empty}}</th>
+        <th>{{list.naver}}</th>
+        <th>{{list.not_finished}}</th>
+        <th>{{list.finished}}</th>
+        <th>{{list.description}}</th>
+        <th>
+            <div>
+                <a href="{% url 'books:store-lease-detail' list.pk %}">정보수정</a>
+            </div>
+            <!-- <div>
+                <a href="{% url 'books:store-lease-delete' list.pk %}">삭제</a>
+            </div> -->
+        </th>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

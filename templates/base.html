@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{page_title}}</title>
+</head>
+<body>
+    <header>
+        {% include "partials/nav.html" %}
+    </header>
+    <div>매물: {% include "books/books_nav.html" %}</div>
+    <div>손님: {% include "customers/customers_nav.html" %}</div>
+    <div><a href="{% url 'contracts:contracts' %}">계약 매물</a></div>
+    {% block content %}{% endblock content %}
+</body>
+</html>

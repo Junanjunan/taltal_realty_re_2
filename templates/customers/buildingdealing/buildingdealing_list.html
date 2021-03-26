@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<h5>Search</h5>
+<form method="get" action="{% url 'customers:building-dealing-customer-search' %}">
+    <label for='price'>매매가:</label><input value=0 type='number' id='price' name='price' />
+    <label for='elevator'>E.V.:</label><input type='checkbox' id='elevator' name='elevator' />
+    <label for='not_finished'>현재손님:</label><input checked type='checkbox' id='not_finished' name='not_finished' />
+    <label for='finished'>완료손님:</label><input type='checkbox' id='finished' name='finished' />
+    <button>Search</button>
+</form>
+<a href="{% url 'customers:building-dealing-customer-creating' %}">새 손님 등록</a>
+
+<table style="width:100%">
+    <tr>
+        <th>No.</th>
+        <th>손님전화</th>
+        <th>확인일</th>
+        <th>매매가</th>
+        <th>E.V.</th>
+        <th>현재손님</th>
+        <th>완료손님</th>
+        <th>비고</th>
+        <th>손님관리</th>
+    </tr>
+    {% for list in buildingdealing_customers %}
+    <tr>
+        <th>{{forloop.counter}}</th>
+        <th>{{list.guest_phone}}</th>
+        <th>{{list.updated|date:"SHORT_DATE_FORMAT"}}</th>
+        <th>{{list.price}}</th>
+        <th>{{list.elevator}}</th>
+        <th>{{list.not_finished}}</th>
+        <th>{{list.finished}}</th>
+        <th>{{list.description}}</th>
+        <th>
+            <div>
+                <a href="{% url 'customers:building-dealing-customer-detail' list.pk %}">정보수정</a>
+            </div>
+            <!-- <div>
+                <a href="{% url 'customers:building-dealing-customer-delete' list.pk %}">삭제</a>
+            </div> -->
+        </th>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

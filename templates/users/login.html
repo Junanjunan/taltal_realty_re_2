@@ -1,0 +1,10 @@
+
+{% include 'users/social_login.html' %}
+    <form method="POST" action="{% url 'users:login' %}">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button>Log In</button>
+    </form>  
+
+
+

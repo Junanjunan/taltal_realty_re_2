@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include "books/books_nav.html" %}
+    <div>주소: {{object.address}}</div>
+    <div>확인: {{object.updated|date:"SHORT_DATE_FORMAT"}}</div>
+    <div>매매가: {{object.price}}만원</div>
+    <div>필요자금: {{object.equity}}만원</div>
+    <div>보증금: {{object.deposit}}만원</div>
+    <div>월세: {{object.month_fee}}만원</div>
+    <div>대지면적: {{object.land_m2}}m2</div>
+    <div>대지종류: {{object.land_type}}개</div>
+    <div>소유주: {{object.owner_phone}}</div>
+    <div>E.V.: {{object.elevator}}</div>
+    <div>Naver: {{object.naver}}</div>
+    <div>비고: {{object.description}}</div>
+
+    <a href="{% url 'books:building-dealing-update' object.pk %}">매물 정보 수정</a>
+{% endblock content %}

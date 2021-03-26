@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include "books/books_nav.html" %}
+    <div>손님전화: {{object.guest_phone}}</div>
+    <div>확인: {{object.updated|date:"SHORT_DATE_FORMAT"}}</div>
+    <div>보증금: {{object.deposit}}만원</div>
+    <div>월세: {{object.month_fee}}만원</div>
+    <div>면적: {{object.area_m2}}m2</div>
+    <div>방: {{object.room}}개</div>
+    <div>주차: {{object.parking}}</div>
+    <div>E.V.: {{object.elevator}}</div>
+    <div>대출: {{object.loan}}</div>
+    <div>비고: {{object.description}}</div>
+
+    <a href="{% url 'customers:house-lease-customer-update' object.pk %}">손님 정보 수정</a>
+    <!-- <div>
+        <a href="{% url 'customers:house-lease-customer-delete' object.pk %}">삭제</a>
+    </div> -->
+{% endblock content %}

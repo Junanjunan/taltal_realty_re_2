@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include "books/books_nav.html" %}
+    <div>주소: {{object.address}}</div>
+    <div>확인: {{object.updated|date:"SHORT_DATE_FORMAT"}}</div>
+    <div>보증금: {{object.deposit}}만원</div>
+    <div>월세: {{object.month_fee}}만원</div>
+    <div>관리비: {{object.management_fee}}만원</div>
+    <div>면적: {{object.area_m2}}m2</div>
+    <div>방: {{object.room}}개</div>
+    <div>화장실: {{object.bath}}개</div>
+    <div>주차: {{object.parking}}</div>
+    <div>E.V.: {{object.elevator}}</div>
+    <div>대출: {{object.loan}}</div>
+    <div>공실: {{object.empty}}</div>
+    <div>집주인: {{object.owner_phone}}</div>
+    <div>세입자: {{object.tenant_phone}}</div>
+    <div>Naver: {{object.naver}}</div>
+    <div>비고: {{object.description}}</div>
+
+    <a href="{% url 'books:room-lease-update' object.pk %}">매물 정보 수정</a>
+{% endblock content %}

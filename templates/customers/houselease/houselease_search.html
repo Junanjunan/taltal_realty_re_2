@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="get" action="{% url 'customers:house-lease-customer-search' %}">
+    <label for='deposit'>보증금:</label><input value="{{deposit__lte}}" type='number' id='deposit' name='deposit' />
+    <label for='month_fee'>월세:</label><input value="{{month_fee__lte}}"" type='number' id='month_fee' name='month_fee' />
+    <label for='room'>방:</label><input value = "{{room__contains}}" type='number' id='room' name='room' />
+    <label for='area_m2'>면적:</label><input value="{{area_m2__gte}}" type='number' id='area_m2' name='area_m2' />   
+    <label for='parking'>주차:</label><input {% if parking %}checked{% endif %} type='checkbox' id='parking' name='parking' />
+    <label for='elevator'>E.V.:</label><input {% if elevator %}checked{% endif %} type='checkbox' id='elevator' name='elevator' />
+    <label for='loan'>대출:</label><input {% if loan %}checked{% endif %} type='checkbox' id='loan' name='loan' />
+    <label for='not_finished'>현재손님:</label><input {% if not_finished %}checked{% endif %} type='checkbox' id='not_finished' name='not_finished' />
+    <label for='finished'>완료손님:</label><input {% if finished %}checked{% endif %} type='checkbox' id='finished' name='finished' />
+    <button>Search</button>
+</form>
+
+<table style="width:100%">
+    <tr>
+        <th>No.</th>
+        <th>손님 전화</th>
+        <th>확인</th>
+        <th>보증금</th>
+        <th>월세</th>
+        <th>방</th>
+        <th>면적m2</th>
+        <th>주차</th>
+        <th>E.V.</th>
+        <th>대출</th>
+        <th>현재손님</th>
+        <th>완료손님</th>
+        <th>비고</th>
+        <th>매물관리</th>
+    </tr>
+    {% for list in houselease_customers %}
+    <tr>
+        <th>{{forloop.counter}}</th>
+        <th>{{list.guest_phone}}</th>
+        <th>{{list.updated|date:"SHORT_DATE_FORMAT"}}</th>
+        <th>{{list.deposit}}</th>
+        <th>{{list.month_fee}}</th>
+        <th>{{list.room}}</th>
+        <th>{{list.area_m2}}</th>
+        <th>{{list.parking}}</th>
+        <th>{{list.elevator}}</th>
+        <th>{{list.loan}}</th>
+        <th>{{list.not_finished}}</th>
+        <th>{{list.finished}}</th>
+        <th>{{list.description}}</th>
+        <th>
+            <div>
+                <a href="{% url 'customers:house-lease-customer-detail' list.pk %}">정보수정</a>
+            </div>
+            <!-- <div>
+                <a href="{% url 'customers:house-lease-customer-delete' list.pk %}">삭제</a>
+            </div> -->
+        </th>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock content %}
