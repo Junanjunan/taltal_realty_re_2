@@ -36,7 +36,8 @@ class LoginView(FormView):
         if user is not None:
             login(self.request, user)
         return super().form_valid(form)
-    
+
+
 def log_out(request):
     logout(request)
     return redirect(reverse("core:home"))

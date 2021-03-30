@@ -27,6 +27,7 @@
         <th>매물관리</th>
     </tr>
     {% for list in housedealing_customers %}
+    {% if user.pk == list.realtor.pk %}
     <tr>
         <th>{{forloop.counter}}</th>
         <th>{{list.guest_phone}}</th>
@@ -48,6 +49,7 @@
             </div> -->
         </th>
     </tr>
+    {% endif %}
     {% endfor %}
 </table>
 

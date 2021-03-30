@@ -29,6 +29,7 @@
         <th>손님관리</th>
     </tr>
     {% for list in shoplease_customers %}
+    {% if user.pk == list.realtor.pk %}
     <tr>
         <th>{{forloop.counter}}</th>
         <th>{{list.guest_phone}}</th>
@@ -50,6 +51,7 @@
             </div> -->
         </th>
     </tr>
+    {% endif %}
     {% endfor %}
 </table>
 {% endblock content %}

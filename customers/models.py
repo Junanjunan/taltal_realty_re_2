@@ -2,8 +2,11 @@ from django.db import models
 
 """below customer"""
 
+
 class HouseLeaseCustomer(models.Model):
 
+    realtor = models.ForeignKey(
+        "users.User", null=True, on_delete=models.CASCADE)
     guest_phone = models.CharField(max_length=30)
     updated = models.DateField(auto_now=True)
     deposit = models.IntegerField(default=0)
@@ -19,7 +22,9 @@ class HouseLeaseCustomer(models.Model):
 
 
 class ShopLeaseCustomer(models.Model):
-    
+
+    realtor = models.ForeignKey(
+        "users.User", null=True, on_delete=models.CASCADE)
     guest_phone = models.CharField(max_length=30)
     updated = models.DateField(auto_now=True)
     deposit = models.IntegerField(default=0)
@@ -30,10 +35,12 @@ class ShopLeaseCustomer(models.Model):
     not_finished = models.BooleanField(default=True)
     finished = models.BooleanField()
     description = models.TextField()
-    
+
 
 class HouseDealingCustomer(models.Model):
 
+    realtor = models.ForeignKey(
+        "users.User", null=True, on_delete=models.CASCADE)
     guest_phone = models.CharField(max_length=30)
     updated = models.DateField(auto_now=True)
     price = models.IntegerField(default=0)
@@ -48,6 +55,8 @@ class HouseDealingCustomer(models.Model):
 
 class BuildingDealingCustomer(models.Model):
 
+    realtor = models.ForeignKey(
+        "users.User", null=True, on_delete=models.CASCADE)
     guest_phone = models.CharField(max_length=30)
     updated = models.DateField(auto_now=True)
     price = models.IntegerField(default=0)

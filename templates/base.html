@@ -9,6 +9,7 @@
 <body>
     <header>
         {% include "partials/nav.html" %}
+        {% block login-signup %}{% endblock login-signup %}
     </header>
     <div>매물: {% include "books/books_nav.html" %}</div>
     <div>손님: {% include "customers/customers_nav.html" %}</div>

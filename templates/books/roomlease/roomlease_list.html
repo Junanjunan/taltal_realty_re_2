@@ -42,36 +42,38 @@
         <th>비고</th>
         <th>매물관리</th>
     </tr>
-    {% for list in roomlease %}
-    <tr>
-        <th>{{forloop.counter}}</th>
-        <th>{{list.address}}</th>
-        <th>{{list.updated|date:"SHORT_DATE_FORMAT"}}</th>
-        <th>{{list.deposit}}</th>
-        <th>{{list.month_fee}}</th>
-        <th>{{list.management_fee}}</th>
-        <th>{{list.area_m2}}</th>
-        <th>{{list.room}}</th>
-        <th>{{list.bath}}</th>
-        <th>{{list.owner_phone}}</th>
-        <th>{{list.tenant_phone}}</th>
-        <th>{{list.parking}}</th>
-        <th>{{list.elevator}}</th>
-        <th>{{list.loan}}</th>
-        <th>{{list.empty}}</th>
-        <th>{{list.naver}}</th>
-        <th>{{list.not_finished}}</th>
-        <th>{{list.finished}}</th>
-        <th>{{list.description}}</th>
-        <th>
-            <div>
-                <a href="{% url 'books:room-lease-detail' list.pk %}">정보수정</a>
-            </div>
-            <!-- <div>
-                <a href="{% url 'books:room-lease-delete' list.pk %}">삭제</a>
-            </div> -->
-        </th>
-    </tr>
+    {% for list in roomlease %} 
+        {% if user.pk == list.realtor.pk %}
+        <tr>
+            <th>{{forloop.counter}}</th>
+            <th>{{list.address}}</th>
+            <th>{{list.updated|date:"SHORT_DATE_FORMAT"}}</th>
+            <th>{{list.deposit}}</th>
+            <th>{{list.month_fee}}</th>
+            <th>{{list.management_fee}}</th>
+            <th>{{list.area_m2}}</th>
+            <th>{{list.room}}</th>
+            <th>{{list.bath}}</th>
+            <th>{{list.owner_phone}}</th>
+            <th>{{list.tenant_phone}}</th>
+            <th>{{list.parking}}</th>
+            <th>{{list.elevator}}</th>
+            <th>{{list.loan}}</th>
+            <th>{{list.empty}}</th>
+            <th>{{list.naver}}</th>
+            <th>{{list.not_finished}}</th>
+            <th>{{list.finished}}</th>
+            <th>{{list.description}}</th>
+            <th>
+                <div>
+                    <a href="{% url 'books:room-lease-detail' list.pk %}">정보수정</a>
+                </div>
+                <!-- <div>
+                    <a href="{% url 'books:room-lease-delete' list.pk %}">삭제</a>
+                </div> -->
+            </th>
+        </tr>
+        {% endif %}
     {% endfor %}
 </table>
 {% endblock content %}

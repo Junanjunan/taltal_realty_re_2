@@ -7,6 +7,7 @@ from . import models
 class HouseLeaseCustomerAdmin(ImportExportMixin, admin.ModelAdmin):
 
     list_display = (
+        "realtor",
         "guest_phone",
         "updated",
         "deposit",
@@ -23,6 +24,7 @@ class HouseLeaseCustomerAdmin(ImportExportMixin, admin.ModelAdmin):
 class ShopLeaseCustomerAdmin(ImportExportMixin, admin.ModelAdmin):
 
     list_display = (
+        "realtor",
         "guest_phone",
         "updated",
         "deposit",
@@ -38,6 +40,7 @@ class ShopLeaseCustomerAdmin(ImportExportMixin, admin.ModelAdmin):
 class HouseDealingCustomerAdmin(ImportExportMixin, admin.ModelAdmin):
 
     list_display = (
+        "realtor",
         "guest_phone",
         "updated",
         "price",
@@ -53,6 +56,7 @@ class HouseDealingCustomerAdmin(ImportExportMixin, admin.ModelAdmin):
 class BuildingDealingCustomerAdmin(ImportExportMixin, admin.ModelAdmin):
 
     list_display = (
+        "realtor",
         "guest_phone",
         "updated",
         "price",

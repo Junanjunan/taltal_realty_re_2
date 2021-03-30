@@ -5,23 +5,25 @@ from . import models
 class RoomLeaseForm(forms.ModelForm):
     class Meta:
         model = models.RoomLease
-        fields = ('address',
-                  "deposit",
-                  "month_fee",
-                  "management_fee",
-                  "area_m2",
-                  "room",
-                  "bath",
-                  "owner_phone",
-                  "tenant_phone",
-                  "parking",
-                  "elevator",
-                  "loan",
-                  "empty",
-                  "naver",
-                  "not_finished",
-                  "finished",
-                  "description")
+        fields = (
+            "realtor",
+            'address',
+            "deposit",
+            "month_fee",
+            "management_fee",
+            "area_m2",
+            "room",
+            "bath",
+            "owner_phone",
+            "tenant_phone",
+            "parking",
+            "elevator",
+            "loan",
+            "empty",
+            "naver",
+            "not_finished",
+            "finished",
+            "description")
 
 
 class RoomDealingForm(forms.ModelForm):

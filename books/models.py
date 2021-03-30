@@ -3,6 +3,8 @@ from django.db import models
 
 class RoomLease(models.Model):
 
+    realtor = models.ForeignKey(
+        "users.User", null=True, on_delete=models.CASCADE)
     address = models.CharField(max_length=200)
     updated = models.DateField(auto_now=True)
     deposit = models.IntegerField(default=0)
@@ -25,6 +27,8 @@ class RoomLease(models.Model):
 
 class RoomDealing(models.Model):
 
+    realtor = models.ForeignKey(
+        "users.User", null=True, on_delete=models.CASCADE)
     address = models.CharField(max_length=200)
     updated = models.DateField(auto_now=True)
     price = models.IntegerField()
@@ -50,6 +54,8 @@ class RoomDealing(models.Model):
 
 class StoreLease(models.Model):
 
+    realtor = models.ForeignKey(
+        "users.User", null=True, on_delete=models.CASCADE)
     address = models.CharField(max_length=200)
     updated = models.DateField(auto_now=True)
     right_deposit = models.IntegerField(default=0)
@@ -73,6 +79,8 @@ class StoreLease(models.Model):
 
 class BuildingDealing(models.Model):
 
+    realtor = models.ForeignKey(
+        "users.User", null=True, on_delete=models.CASCADE)
     address = models.CharField(max_length=200)
     updated = models.DateField(auto_now=True)
     price = models.IntegerField()
@@ -87,5 +95,3 @@ class BuildingDealing(models.Model):
     not_finished = models.BooleanField(default=True)
     finished = models.BooleanField()
     description = models.TextField()
-
-

@@ -1,10 +1,17 @@
 
+{% extends 'base.html' %}
+
+{% block login-signup %}
 {% include 'users/social_login.html' %}
-    <form method="POST" action="{% url 'users:login' %}">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button>Log In</button>
-    </form>  
+<form method="POST" action="{% url 'users:login' %}">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>Log In</button>
+</form>
+<hr>  
+
+{% endblock login-signup %}
+
 
 
 
