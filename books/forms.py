@@ -5,8 +5,8 @@ from . import models
 class RoomLeaseForm(forms.ModelForm):
     class Meta:
         model = models.RoomLease
-        fields = (
-            "realtor",
+        """fields = (
+            'realtor',
             'address',
             "deposit",
             "month_fee",
@@ -23,7 +23,9 @@ class RoomLeaseForm(forms.ModelForm):
             "naver",
             "not_finished",
             "finished",
-            "description")
+            "description")"""
+        """"fields = '__all__'"""
+        exclude = ['realtor']
 
 
 class RoomDealingForm(forms.ModelForm):

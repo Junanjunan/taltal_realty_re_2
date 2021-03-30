@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from django.views.generic import ListView, CreateView, DetailView, UpdateView
 from . import models, forms
+from books import models as models_users
 
 
 class RoomLeaseList(ListView):
@@ -19,7 +20,9 @@ class RoomLeaseCreating(CreateView):
     template_name = 'books/roomlease/roomlease_creating.html'
 
     def form_valid(self, form):
-        form.save()
+        book = form.save()
+        book.realtor = self.request.user                    
+        book.save()
         return redirect(reverse("books:room-lease-list"))
 
     # def get_success_url(self):
